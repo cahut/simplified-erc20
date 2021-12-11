@@ -4,7 +4,7 @@ from scripts.helpful_scripts import get_account
 
 def deploy_token(initial_amount):
     account = get_account()
-    token = ERC20.deploy("Nano", "XNO", initial_amount, {"from": account})
+    token = ERC20.deploy("Token", "TKN", initial_amount, {"from": account})
 
     print(f"Contract deployed to {token.address}")
 
