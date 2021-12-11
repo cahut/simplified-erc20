@@ -1,6 +1,7 @@
-from brownie import ERC20, accounts, config, reverts
+from brownie import ERC20, accounts, config, reverts, network
 from scripts.deploy_token import deploy_token
-from scripts.helpful_scripts import get_account
+from scripts.helpful_scripts import get_account, LOCAL_BLOCKCHAIN_ENVIRONMENTS
+import pytest
 
 
 def test_balances():
@@ -14,6 +15,9 @@ def test_balances():
 
 
 def test_transfer():
+    if network.show_active() not in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
+        pytest.skip()
+
     account = get_account()
     recipient = accounts[1]
     hacker = accounts[2]
@@ -33,6 +37,9 @@ def test_transfer():
 
 
 def test_allowance():
+    if network.show_active() not in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
+        pytest.skip()
+
     account = get_account()
     spender = accounts[1]
     recipient = accounts[2]

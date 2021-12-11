@@ -12,4 +12,5 @@ def deploy_token(initial_amount):
 
 
 def main():
-    deploy_token()
+    initial_amount = 100000000000000000000
+    deploy_token(initial_amount)
